@@ -118,7 +118,7 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
   return (
     <div className="relative w-full overflow-hidden rounded-t-2xl">
       {/* IMAGE CONTAINER (FIXED HEIGHT - NO SCROLL ISSUE) */}
-      <div className="relative w-full h-[180px] sm:h-[200px] md:h-[240px] overflow-hidden">
+      <div className="relative w-full h-[180px] sm:h-[200px] md:h-[280px] overflow-hidden">
         {!loaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         )}
