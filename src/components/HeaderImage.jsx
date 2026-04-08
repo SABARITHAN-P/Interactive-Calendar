@@ -117,13 +117,13 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
 
   return (
     <div className="relative w-full overflow-hidden rounded-t-2xl">
-      {/* 🖼️ IMAGE CONTAINER (responsive height) */}
-      <div className="relative w-full h-[260px] sm:h-[320px] md:h-[480px] overflow-hidden">
+      {/* IMAGE CONTAINER (FIXED HEIGHT - NO SCROLL ISSUE) */}
+      <div className="relative w-full h-[180px] sm:h-[200px] md:h-[240px] overflow-hidden">
         {!loaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         )}
 
-        {/* 🖼️ IMAGE */}
+        {/* IMAGE */}
         <img
           ref={imgRef}
           src={image}
@@ -134,8 +134,8 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
           }`}
           style={{
             objectPosition: "50% 20%",
-            transform: "scale(1)", 
-            transition: "opacity 0.5s ease", 
+            transform: "scale(1)",
+            transition: "opacity 0.5s ease",
           }}
           draggable={false}
         />
@@ -144,17 +144,17 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
       <svg viewBox="0 0 1440 120" className="absolute bottom-0 left-0 w-full">
         <path
           fill="#ffffff"
-          d="M0,80 C250,140 450,20 700,70 C950,120 1150,40 1440,80 L1440,120 L0,120 Z"
+          d="M0,70 C250,120 450,20 700,60 C950,100 1150,40 1440,70 L1440,120 L0,120 Z"
         />
       </svg>
 
-      {/* 📅 TEXT */}
-      <div className="absolute right-[10%] bottom-[16%] text-white text-right">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-wide leading-none">
+      {/* TEXT  */}
+      <div className="absolute right-[8%] bottom-[12%] text-white text-right">
+        <h2 className="text-2xl md:text-3xl font-bold leading-none">
           {format(currentDate, "yyyy")}
         </h2>
 
-        <p className="text-base tracking-[0.35em] font-medium mt-1">
+        <p className="text-sm tracking-[0.25em] font-medium mt-1">
           {format(currentDate, "MMMM").toUpperCase()}
         </p>
       </div>
