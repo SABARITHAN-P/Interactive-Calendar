@@ -65,7 +65,20 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-200 to-gray-300 flex justify-center items-start py-10 px-2 relative overflow-hidden">
+    <div className="min-h-screen flex justify-center items-center px-2 relative overflow-hidden">
+      {/* 🔥 BLURRED BACKGROUND IMAGE */}
+      <div
+        className="absolute inset-0 bg-cover bg-center blur-3xl scale-110 opacity-40"
+        style={{
+          backgroundImage: `url(${currentImage})`,
+        }}
+      />
+
+      {/* OPTIONAL DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/10" />
+
+      {/* CONTENT */}
+      <div className="relative z-10">{/* your AnimatePresence + card */}</div>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentDate.getMonth()}
