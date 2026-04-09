@@ -40,14 +40,12 @@ function App() {
       if (key && key.startsWith("note-")) {
         try {
           const raw = localStorage.getItem(key);
-
           if (!raw || raw === "undefined") continue;
 
           const data = JSON.parse(raw);
           allNotes[key] = data;
         } catch (err) {
           console.warn("Invalid JSON found, removing:", key);
-
           localStorage.removeItem(key);
         }
       }
@@ -65,8 +63,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center px-2 relative overflow-hidden">
-      {/* 🔥 BLURRED BACKGROUND IMAGE */}
+    <div className="min-h-screen flex justify-center items-center px-3 sm:px-4 relative overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center blur-3xl scale-110 opacity-40"
         style={{
@@ -74,11 +71,8 @@ function App() {
         }}
       />
 
-      {/* OPTIONAL DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/10" />
 
-      {/* CONTENT */}
-      <div className="relative z-10">{/* your AnimatePresence + card */}</div>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentDate.getMonth()}
@@ -116,10 +110,12 @@ function App() {
               setThemeColor={setThemeColor}
             />
 
-            <div className="px-4 md:px-5 pb-5 pt-4 -mt-6">
-              <div className="flex gap-5 items-start">
+            {/* CONTENT */}
+            <div className="px-3 sm:px-4 md:px-5 pb-4 sm:pb-5 pt-3 sm:pt-4 -mt-5 sm:-mt-6">
+              {/* 🔥 RESPONSIVE LAYOUT */}
+              <div className="flex flex-col md:flex-row gap-4 md:gap-5 items-stretch">
                 {/* NOTES */}
-                <div className="w-[42%]">
+                <div className="w-full md:w-[42%]">
                   <NotesPanel
                     startDate={selectedRange.startDate}
                     endDate={selectedRange.endDate}
@@ -128,7 +124,7 @@ function App() {
                 </div>
 
                 {/* CALENDAR */}
-                <div className="w-[58%]">
+                <div className="w-full md:w-[58%]">
                   <Calendar
                     setSelectedRange={setSelectedRange}
                     setCurrentDateGlobal={setCurrentDate}

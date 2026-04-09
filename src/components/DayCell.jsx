@@ -58,13 +58,11 @@ export default function DayCell({
     onClick(day);
   };
 
-  // DESKTOP DOUBLE CLICK
   const handleDoubleClick = (e) => {
     e.stopPropagation();
     onDoubleClick(day);
   };
 
-  // MOBILE LONG PRESS (replaces double click)
   const handleTouchStart = () => {
     pressTimer.current = setTimeout(() => {
       onDoubleClick(day);
@@ -84,7 +82,8 @@ export default function DayCell({
       onTouchEnd={handleTouchEnd}
       className={`
         relative flex items-center justify-center
-        text-base min-h-[48px]   /* ✅ bigger touch area */
+        text-[15px] sm:text-base
+        min-h-[52px] sm:min-h-[48px]
         cursor-pointer select-none
         transition-all duration-200 ease-out
         ${!isCurrentMonth ? "text-gray-200" : "text-gray-900"}
@@ -102,14 +101,14 @@ export default function DayCell({
       {(isInRange || isPreview) && (
         <div
           className={`
-            absolute top-1/2 -translate-y-1/2 h-[70%] z-0
+            absolute top-1/2 -translate-y-1/2 h-[65%] sm:h-[70%] z-0
             ${isStart ? "left-1/2 right-0 rounded-r-full" : ""}
             ${isEnd ? "left-0 right-1/2 rounded-l-full" : ""}
             ${!isStart && !isEnd ? "left-0 right-0" : ""}
           `}
           style={{
             backgroundColor: themeColor.main,
-            opacity: 0.3,
+            opacity: 0.25,
           }}
         />
       )}
@@ -117,7 +116,7 @@ export default function DayCell({
       {/* START / END */}
       {(isStart || isEnd) && (
         <div
-          className="absolute w-10 h-10 rounded-full z-20" // ✅ slightly bigger
+          className="absolute w-9 h-9 sm:w-10 sm:h-10 rounded-full z-20"
           style={{ backgroundColor: themeColor.main }}
         />
       )}
@@ -125,14 +124,14 @@ export default function DayCell({
       {/* TODAY */}
       {isTodayDate && !isStart && !isEnd && (
         <div
-          className="absolute w-10 h-10 rounded-full border-2"
+          className="absolute w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2"
           style={{
             borderColor: lightenColor(themeColor.main, 0.7),
           }}
         />
       )}
 
-      {/* DAY */}
+      {/* DAY NUMBER */}
       <span
         className={`relative z-20 ${
           isStart || isEnd ? "text-white font-semibold scale-105" : ""
@@ -141,10 +140,10 @@ export default function DayCell({
         {format(day, "d")}
       </span>
 
-      {/*NOTE DOT */}
+      {/* NOTE DOT */}
       {hasNote && (
         <div
-          className="absolute bottom-1.5 w-2 h-2 rounded-full z-30"
+          className="absolute bottom-2 sm:bottom-1.5 w-2.5 h-2.5 sm:w-2 sm:h-2 rounded-full z-30"
           style={{
             backgroundColor: isPinned
               ? lightenColor(themeColor.dark, 0.1)

@@ -35,9 +35,9 @@ export default function Calendar({
     const diff = touchStartX.current - touchEndX.current;
 
     if (diff > 50) {
-      handleNext(); 
+      handleNext();
     } else if (diff < -50) {
-      handlePrev(); 
+      handlePrev();
     }
   };
 
@@ -84,23 +84,24 @@ export default function Calendar({
 
   return (
     <div
-      className="w-full pt-2"
+      className="w-full pt-1 sm:pt-2"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
       {/* HEADER */}
       <div className="flex justify-between items-center mb-3 px-1">
-        {/* OPTIONAL LABEL (helps mobile UX) */}
-        <span className="text-xs text-gray-400 hidden sm:block">
+        {/* LABEL */}
+        <span className="text-[11px] sm:text-xs text-gray-400 hidden sm:block">
           Swipe or use arrows
         </span>
 
+        {/* NAV BUTTONS */}
         <div className="flex gap-2">
           <button
             type="button"
             onClick={handlePrev}
-            className="px-3 py-2 rounded-lg transition active:scale-90"
+            className="w-9 h-9 sm:w-auto sm:h-auto flex items-center justify-center rounded-lg transition active:scale-90"
             style={{ color: themeColor.dark }}
           >
             ←
@@ -109,7 +110,7 @@ export default function Calendar({
           <button
             type="button"
             onClick={handleNext}
-            className="px-3 py-2 rounded-lg transition active:scale-90"
+            className="w-9 h-9 sm:w-auto sm:h-auto flex items-center justify-center rounded-lg transition active:scale-90"
             style={{ color: themeColor.dark }}
           >
             →

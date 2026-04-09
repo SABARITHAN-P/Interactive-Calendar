@@ -74,13 +74,8 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
         let color = enhanceColor([r, g, b]);
         const brightness = getBrightness(color);
 
-        if (brightness > 170) {
-          color = color.map((c) => c * 0.6);
-        }
-
-        if (brightness < 80) {
-          color = color.map((c) => Math.min(255, c * 1.3));
-        }
+        if (brightness > 170) color = color.map((c) => c * 0.6);
+        if (brightness < 80) color = color.map((c) => Math.min(255, c * 1.3));
 
         const dark = darkenColor(color);
 
@@ -90,16 +85,12 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
         };
 
         colorCache[image] = theme;
-
         setThemeColor(theme);
-      } catch (e) {
-        console.log("Color extraction failed");
-
+      } catch {
         const fallback = {
           main: "#3b82f6",
           dark: "#1e40af",
         };
-
         colorCache[image] = fallback;
         setThemeColor(fallback);
       }
@@ -117,13 +108,12 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
 
   return (
     <div className="relative w-full overflow-hidden rounded-t-2xl">
-      {/* IMAGE CONTAINER (FIXED HEIGHT - NO SCROLL ISSUE) */}
-      <div className="relative w-full h-[180px] sm:h-[200px] md:h-[280px] overflow-hidden">
+      {/* IMAGE */}
+      <div className="relative w-full h-[140px] sm:h-[200px] md:h-[280px] overflow-hidden">
         {!loaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         )}
 
-        {/* IMAGE */}
         <img
           ref={imgRef}
           src={image}
@@ -133,28 +123,27 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
             loaded ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            objectPosition: "50% 20%",
-            transform: "scale(1)",
-            transition: "opacity 0.5s ease",
+            objectPosition: "50% 25%", // 🔥 slightly better crop
           }}
           draggable={false}
         />
       </div>
 
-      <svg viewBox="0 0 1440 120" className="absolute bottom-0 left-0 w-full">
+      {/* CURVE */}
+      <svg viewBox="0 0 1440 100" className="absolute bottom-0 left-0 w-full">
         <path
           fill="#ffffff"
-          d="M0,70 C250,120 450,20 700,60 C950,100 1150,40 1440,70 L1440,120 L0,120 Z"
+          d="M0,60 C250,110 450,30 700,60 C950,90 1150,40 1440,60 L1440,120 L0,120 Z"
         />
       </svg>
 
-      {/* TEXT  */}
-      <div className="absolute right-[8%] bottom-[12%] text-white text-right">
-        <h2 className="text-2xl md:text-3xl font-bold leading-none">
+      {/* TEXT */}
+      <div className="absolute right-[6%] bottom-[18%] text-white text-right">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold leading-none">
           {format(currentDate, "yyyy")}
         </h2>
 
-        <p className="text-sm tracking-[0.25em] font-medium mt-1">
+        <p className="text-xs sm:text-sm tracking-[0.2em] font-medium mt-1">
           {format(currentDate, "MMMM").toUpperCase()}
         </p>
       </div>

@@ -11,7 +11,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
   const isRange = startDate && endDate;
   const isSingle = startDate && !endDate;
 
-  // 📅 Display label
   const displayDate =
     mode === "month"
       ? format(new Date(), "MMMM yyyy")
@@ -21,7 +20,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
           ? format(startDate, "do MMMM")
           : "No date selected";
 
-  // 🔑 Key generator
   const getKey = () => {
     if (mode === "month") {
       return `note-month-${format(new Date(), "yyyy-MM")}`;
@@ -41,7 +39,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
     return "note-empty";
   };
 
-  // 📥 Load note
   useEffect(() => {
     const key = getKey();
     const saved = localStorage.getItem(key);
@@ -63,7 +60,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
     }
   }, [startDate, endDate, mode]);
 
-  // 💾 Save note
   const saveNote = (text, pinState = pinned) => {
     try {
       const data = JSON.stringify({
@@ -76,7 +72,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
     }
   };
 
-  // ⌨️ Handle typing (debounced)
   const handleChange = (value) => {
     const safeValue = value ?? "";
     setNote(safeValue);
@@ -89,7 +84,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
     }, 300);
   };
 
-  // 📌 Toggle pin
   const togglePin = () => {
     const newPin = !pinned;
     setPinned(newPin);
@@ -97,7 +91,6 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
     refreshNotes();
   };
 
-  // 🗑 Clear note
   const clearNote = () => {
     const key = getKey();
     localStorage.removeItem(key);
@@ -107,20 +100,20 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
   };
 
   return (
-    <div className="w-full pt-2 bg-white/80 ">
+    <div className="w-full pt-1 sm:pt-2 bg-white/80">
       {/* 🔀 MODE TOGGLE */}
-      <div className="flex justify-center mb-4">
-        <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-xl w-fit shadow-sm">
+      <div className="flex justify-center mb-3 sm:mb-4">
+        <div className="flex items-center gap-1 sm:gap-2 bg-gray-100 p-1 rounded-xl w-fit shadow-sm">
           <button
             onClick={() => setMode("date")}
             className={`
-        flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
-        ${
-          mode === "date"
-            ? "bg-white text-blue-600 shadow-sm"
-            : "text-gray-500 hover:text-gray-700"
-        }
-      `}
+              px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-medium rounded-lg transition-all
+              ${
+                mode === "date"
+                  ? "bg-white text-blue-600 shadow-sm"
+                  : "text-gray-500 hover:text-gray-700"
+              }
+            `}
           >
             Date
           </button>
@@ -128,13 +121,13 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
           <button
             onClick={() => setMode("month")}
             className={`
-        flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
-        ${
-          mode === "month"
-            ? "bg-white text-blue-600 shadow-sm"
-            : "text-gray-500 hover:text-gray-700"
-        }
-      `}
+              px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-medium rounded-lg transition-all
+              ${
+                mode === "month"
+                  ? "bg-white text-blue-600 shadow-sm"
+                  : "text-gray-500 hover:text-gray-700"
+              }
+            `}
           >
             Month
           </button>
@@ -142,15 +135,13 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
       </div>
 
       {/* HEADER */}
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="text-sm font-semibold text-gray-700 tracking-tight">
+      <div className="flex justify-between items-center mb-2 sm:mb-3">
+        <h3 className="text-[13px] sm:text-sm font-semibold text-gray-700 tracking-tight">
           {mode === "month"
             ? "Monthly Notes"
             : isRange
               ? "Range Notes"
-              : isSingle
-                ? "Date Notes"
-                : "Date Notes"}
+              : "Date Notes"}
         </h3>
 
         <div className="flex items-center gap-2">
@@ -159,7 +150,7 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
             type="button"
             onClick={togglePin}
             className={`
-              w-9 h-9 flex items-center justify-center rounded-lg transition-all
+              w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg transition-all
               ${
                 pinned
                   ? "bg-gray-300 text-white shadow-md"
@@ -173,7 +164,7 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
           {/* CLEAR */}
           <button
             onClick={clearNote}
-            className="w-9 h-9 flex items-center justify-center rounded-lg bg-red-400 text-white hover:bg-red-500 shadow-sm transition-all"
+            className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg bg-red-400 text-white hover:bg-red-500 shadow-sm transition-all"
           >
             ✕
           </button>
@@ -181,7 +172,9 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
       </div>
 
       {/* DATE DISPLAY */}
-      <p className="text-xs text-gray-400 mb-3">{displayDate}</p>
+      <p className="text-[11px] sm:text-xs text-gray-400 mb-2 sm:mb-3">
+        {displayDate}
+      </p>
 
       {/* TEXTAREA */}
       <div className="relative">
@@ -191,9 +184,9 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
           placeholder="Write your notes..."
           className="
             w-full bg-transparent 
-            text-sm 
-            leading-[24px]
-            resize-none outline-none px-0 z-10 relative
+            text-[13px] sm:text-sm
+            leading-[22px] sm:leading-[24px]
+            resize-none outline-none px-1 sm:px-0 z-10 relative
           "
           rows="6"
         />
@@ -204,7 +197,7 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
             <div
               key={i}
               className="border-b border-gray-300"
-              style={{ height: "24px" }}
+              style={{ height: "22px" }}
             />
           ))}
         </div>
