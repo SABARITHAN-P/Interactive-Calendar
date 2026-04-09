@@ -1,4 +1,4 @@
-# 📅 Interactive Calendar Component
+# 📅 Interactive Calendar with Notes & Dynamic Theming
 
 An interactive, wall-calendar inspired React component featuring date range selection, notes management, and dynamic theming.
 
@@ -37,14 +37,17 @@ This project was built as part of a frontend engineering challenge to transform 
   - Date range
   - Entire month
 
-- 📌 Pin important notes
+- Toggle between date-based and monthly notes
+- Pin important notes
+- Clear notes option
 - Data persists using localStorage
 
 ### Dynamic Theming
 
-- Extracts dominant color from image using Canvas API
-- Automatically adjusts UI colors
-- Maintains contrast for readability
+- Extracts dominant color from images using Canvas API
+- Applies theme dynamically to UI elements
+- Cached results to avoid repeated computation
+- Ensures contrast for accessibility
 
 ---
 
@@ -66,7 +69,7 @@ This project was built as part of a frontend engineering challenge to transform 
 
 ---
 
-## ⚡ Performance Optimizations
+##  Performance Optimizations
 
 - Image preloading for faster switching
 - Cached color extraction (avoids recalculation)
@@ -75,7 +78,7 @@ This project was built as part of a frontend engineering challenge to transform 
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - React (Vite)
 - Tailwind CSS
@@ -104,7 +107,7 @@ src/
 
 ---
 
-## 🚀 How to Run Locally
+## How to Run Locally
 
 ### 1️. Clone the repository
 
@@ -155,6 +158,15 @@ npm run preview
 ## Live Demo
 
 👉 https://interactive-calendar-ivory.vercel.app
+
+---
+
+## State Management
+
+- Managed using React hooks (useState, useEffect, useRef)
+- Derived state for date range and selection logic
+- localStorage used for persistence layer
+- Debounced updates to optimize performance
 
 ---
 

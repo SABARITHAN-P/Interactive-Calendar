@@ -107,36 +107,38 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
   };
 
   return (
-    <div className="w-full pt-2 bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-md">
+    <div className="w-full pt-2 bg-white/80 ">
       {/* 🔀 MODE TOGGLE */}
-      <div className="flex items-center gap-2 mb-4 bg-gray-100 p-1 rounded-xl w-fit shadow-sm">
-        <button
-          onClick={() => setMode("date")}
-          className={`
-            flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
-            ${
-              mode === "date"
-                ? "bg-white text-blue-600 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
-            }
-          `}
-        >
-          Date
-        </button>
+      <div className="flex justify-center mb-4">
+        <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-xl w-fit shadow-sm">
+          <button
+            onClick={() => setMode("date")}
+            className={`
+        flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
+        ${
+          mode === "date"
+            ? "bg-white text-blue-600 shadow-sm"
+            : "text-gray-500 hover:text-gray-700"
+        }
+      `}
+          >
+            Date
+          </button>
 
-        <button
-          onClick={() => setMode("month")}
-          className={`
-            flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
-            ${
-              mode === "month"
-                ? "bg-white text-blue-600 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
-            }
-          `}
-        >
-          Month
-        </button>
+          <button
+            onClick={() => setMode("month")}
+            className={`
+        flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
+        ${
+          mode === "month"
+            ? "bg-white text-blue-600 shadow-sm"
+            : "text-gray-500 hover:text-gray-700"
+        }
+      `}
+          >
+            Month
+          </button>
+        </div>
       </div>
 
       {/* HEADER */}
@@ -148,7 +150,7 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
               ? "Range Notes"
               : isSingle
                 ? "Date Notes"
-                : "Notes"}
+                : "Date Notes"}
         </h3>
 
         <div className="flex items-center gap-2">
