@@ -146,7 +146,9 @@ export default function DayCell({
         <div
           className="absolute bottom-1.5 w-2 h-2 rounded-full z-30"
           style={{
-            backgroundColor: isPinned ? "#616160" : "#d1d5db",
+            backgroundColor: isPinned
+              ? lightenColor(themeColor.dark, 0.1)
+              : "#d1d5db",
           }}
         />
       )}

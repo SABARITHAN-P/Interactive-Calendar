@@ -121,7 +121,7 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
             }
           `}
         >
-           Date
+          Date
         </button>
 
         <button
@@ -130,12 +130,12 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
             flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-lg transition-all
             ${
               mode === "month"
-                ? "bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-md"
+                ? "bg-white text-blue-600 shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
             }
           `}
         >
-           Month
+          Month
         </button>
       </div>
 
@@ -160,7 +160,7 @@ export default function NotesPanel({ startDate, endDate, refreshNotes }) {
               w-9 h-9 flex items-center justify-center rounded-lg transition-all
               ${
                 pinned
-                  ? "bg-yellow-400 text-white shadow-md"
+                  ? "bg-gray-300 text-white shadow-md"
                   : "bg-gray-100 text-gray-500 hover:bg-gray-200"
               }
             `}
