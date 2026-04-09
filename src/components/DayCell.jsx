@@ -67,8 +67,8 @@ export default function DayCell({
   // MOBILE LONG PRESS (replaces double click)
   const handleTouchStart = () => {
     pressTimer.current = setTimeout(() => {
-      onDoubleClick(day); 
-    }, 400); 
+      onDoubleClick(day);
+    }, 400);
   };
 
   const handleTouchEnd = () => {
@@ -126,7 +126,9 @@ export default function DayCell({
       {isTodayDate && !isStart && !isEnd && (
         <div
           className="absolute w-10 h-10 rounded-full border-2"
-          style={{ borderColor: themeColor.dark }}
+          style={{
+            borderColor: lightenColor(themeColor.main, 0.7),
+          }}
         />
       )}
 
@@ -144,7 +146,7 @@ export default function DayCell({
         <div
           className="absolute bottom-1.5 w-2 h-2 rounded-full z-30"
           style={{
-            backgroundColor: isPinned ? "#f9a82e" : "#d1d5db",
+            backgroundColor: isPinned ? "#616160" : "#d1d5db",
           }}
         />
       )}
