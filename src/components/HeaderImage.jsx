@@ -122,7 +122,7 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
   className={`w-full h-full object-cover ${
     loaded ? "opacity-100" : "opacity-0"
   }`}
-  style={{ objectPosition: "50% 15%", willChange: "auto" }}
+  style={{ objectPosition: "50% 20%", willChange: "auto" }}
   draggable={false}
 />
       </div>
