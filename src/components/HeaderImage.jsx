@@ -109,7 +109,7 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
   return (
     <div className="relative w-full overflow-hidden rounded-t-2xl">
       {/* IMAGE */}
-      <div className="relative w-full h-[140px] sm:h-[200px] md:h-[280px] overflow-hidden">
+      <div className="relative w-full h-[140px] sm:h-[200px] md:h-[280px] overflow-hidden bg-black">
         {!loaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         )}
@@ -119,12 +119,11 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
           src={image}
           alt="calendar"
           onLoad={() => setLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            objectPosition: "50% 25%", // 🔥 slightly better crop
-          }}
+          className={`w-full h-full 
+            object-contain sm:object-cover 
+            transition-opacity duration-500 
+            ${loaded ? "opacity-100" : "opacity-0"}
+          `}
           draggable={false}
         />
       </div>
