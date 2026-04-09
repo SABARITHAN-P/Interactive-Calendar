@@ -115,18 +115,16 @@ export default function HeaderImage({ currentDate, image, setThemeColor }) {
         )}
 
         <img
-          ref={imgRef}
-          src={image}
-          alt="calendar"
-          onLoad={() => setLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            objectPosition: "50% 25%", // 🔥 slightly better crop
-          }}
-          draggable={false}
-        />
+  ref={imgRef}
+  src={image}
+  alt="calendar"
+  onLoad={() => setLoaded(true)}
+  className={`w-full h-full object-cover ${
+    loaded ? "opacity-100" : "opacity-0"
+  }`}
+  style={{ objectPosition: "50% 25%", willChange: "auto" }}
+  draggable={false}
+/>
       </div>
 
       {/* CURVE */}
