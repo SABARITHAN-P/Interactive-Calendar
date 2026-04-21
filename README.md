@@ -7,7 +7,9 @@ This project focuses on **frontend engineering excellence**, including performan
 ---
 
 # 🌐 Live Demo
+
 https://interactive-calendar-ivory.vercel.app/
+
 ---
 
 ## Project Objective
