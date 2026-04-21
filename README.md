@@ -6,6 +6,12 @@ This project focuses on **frontend engineering excellence**, including performan
 
 ---
 
+# 🌐 Live Demo
+
+interactive-calendar-ivory.vercel.app 
+
+---
+
 ## Project Objective
 
 This project was built as part of a frontend engineering challenge to transform a static calendar design into a **fully functional, responsive, and interactive web component**.
